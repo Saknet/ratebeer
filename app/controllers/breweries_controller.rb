@@ -8,7 +8,7 @@ class BreweriesController < ApplicationController
     @breweries = Brewery.all
     render :index
   end
-
+  
   # GET /breweries/1
   # GET /breweries/1.json
   def show
