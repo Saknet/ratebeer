@@ -8,7 +8,6 @@ script:
 - bundle exec rspec -fd spec/
 deploy:
   provider: heroku
-  api_key:
-    secure: LPA6V4EsJNQ9eLndUHgR+XZjLvr3qI74QzbE1ZZRHj0xd4l66wq/IjTiYxUvTj4VMHfMj/y9gnSQ4CWQSd+H8ldxkjJawkv1Iaxj7lqyoMPz80d59ZUtUwWfXd2r48glj3tGWchHtOosb6PzG5sg3OA9vXeT0bk9mQ32iZHgYco=
-
+  api_key: LPA6V4EsJNQ9eLndUHgR+XZjLvr3qI74QzbE1ZZRHj0xd4l66wq/IjTiYxUvTj4VMHfMj/y9gnSQ4CWQSd+H8ldxkjJawkv1Iaxj7lqyoMPz80d59ZUtUwWfXd2r48glj3tGWchHtOosb6PzG5sg3OA9vXeT0bk9mQ32iZHgYco=
+ app: warm-taiga-3244
  run: "rake db:migrate"
