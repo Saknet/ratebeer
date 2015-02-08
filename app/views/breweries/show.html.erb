@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <h2><i>Established in
+  <h2><i>established in
   <%= @brewery.year %></i></h2>
 </p>
 
@@ -19,11 +19,12 @@
   <%= link_to beer.name, beer %>
       <% end %>
 </p>
-
+<br>
+<br>
 <p>
   <% if !@brewery.ratings.empty? %>
       <%= "Has #{pluralize(@brewery.ratings.count, 'rating')}, average #{@brewery.average_rating}" %>
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %>
+<%= link_to 'Edit', edit_brewery_path(@brewery) if current_user %>

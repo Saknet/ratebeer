@@ -23,5 +23,6 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_beer_path(@beer) %> |
+<%= link_to 'Edit', edit_beer_path(@beer) if current_user %>
+<br>
 <%= link_to 'Back', beers_path %>

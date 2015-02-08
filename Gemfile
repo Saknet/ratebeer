@@ -7,17 +7,30 @@ gem 'rails', '4.2.0'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'rspec-its'
+
 group :development, :test do
   gem 'sqlite3'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'simplecov', require: false
+end
+
 group :production do
-   gem 'pg'
-   gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
-   gem "better_errors"
+  gem "better_errors"
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
 end
 
 # Use SCSS for stylesheets
