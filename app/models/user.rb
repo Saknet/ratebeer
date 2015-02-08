@@ -19,4 +19,13 @@ class User < ActiveRecord::Base
     ratings.order(score: :desc).limit(1).first.beer
   end
 
+  def favorite_style
+    return nil if ratings.empty?
+    ratings.joins(:beer).group(:style).order(score: :desc).limit(1).first.beer.style
+  end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+    ratings.joins(:beer).group(:brewery_id).order(score: :desc).limit(1).first.beer.brewery.name
+  end
 end

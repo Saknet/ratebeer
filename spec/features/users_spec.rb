@@ -70,4 +70,26 @@ end
         page.first(:link, "delete").click
       }.to change{user.ratings.count}.from(3).to(2)
     end
-end
+
+    it "shows favorite style" do
+      FactoryGirl.create :rating, score:1, beer: (FactoryGirl.create :beer, style: "Lager"), user:user
+      FactoryGirl.create :rating, score:2, beer: (FactoryGirl.create :beer, style: "Lager"), user:user
+      FactoryGirl.create :rating, score:3, beer: (FactoryGirl.create :beer, style: "IPA"), user:user
+      FactoryGirl.create :rating, score:4, beer: (FactoryGirl.create :beer, style: "IPA"), user:user
+      FactoryGirl.create :rating, score:5, beer: (FactoryGirl.create :beer, style: "Porter"), user:user
+      visit user_path(user)
+
+      expect(page).to have_content "Favorite style Porter"
+    end
+
+    it "shows favorite brewery" do
+      brewery2 = FactoryGirl.create :brewery, name:"testi"
+      FactoryGirl.create :rating, score:2, beer: (FactoryGirl.create :beer, brewery:brewery), user:user
+      FactoryGirl.create :rating, score:1, beer: (FactoryGirl.create :beer, brewery:brewery), user:user
+      FactoryGirl.create :rating, score:2, beer: (FactoryGirl.create :beer, brewery:brewery2), user:user
+      FactoryGirl.create :rating, score:2, beer: (FactoryGirl.create :beer, brewery:brewery2), user:user
+      visit user_path(user)
+
+      expect(page).to have_content "Favorite brewery testi"
+    end
+  end
